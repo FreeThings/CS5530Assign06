@@ -5,16 +5,31 @@ namespace ChessBrowser.Components
     public static class PGNParser
     {
 
-        public static ChessGame ChessGameParser(string PGN)
+        public static List<ChessGame> ChessGameParser(string[] PGN)
         {
 
-            String[] lines = PGN.Split("\n");
 
+            List<ChessGame> games = new List<ChessGame>();
             ChessGame game = new ChessGame();
+            bool flag = false;
 
-            foreach (string line in lines)
+            foreach (string line in PGN)
             {
-
+                if(line == "/n") 
+                { 
+                    if (flag == false)
+                    {
+                        flag = true;
+                        continue;
+                    }
+                    else
+                    {
+                        games.Append(game);
+                        game = new ChessGame();
+                        flag = false;
+                        continue;
+                    }
+                }
                 if (line.Substring(0,0) == "[")
                 {
                     string tag = line.Substring(1).Split(" ")[0];
@@ -58,7 +73,7 @@ namespace ChessBrowser.Components
 
             }
 
-            return game;
+            return games;
         }
 
     }

@@ -40,12 +40,11 @@ namespace ChessBrowser.Components.Pages
       // assuimg you've filled in the credentials in the GUI
       string connection = GetConnectionString();
 
-      // TODO:
-      //   Parse the provided PGN data
-      //   We recommend creating separate libraries to represent chess data and load the file
+            // Parse PGN Data
+            List<ChessGame> games = PGNParser.ChessGameParser(PGNFileLines);
 
 
-      using (MySqlConnection conn = new MySqlConnection(connection))
+            using (MySqlConnection conn = new MySqlConnection(connection))
       {
         try
         {
