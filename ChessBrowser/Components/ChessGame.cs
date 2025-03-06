@@ -5,17 +5,17 @@ namespace ChessBrowser.Components
     public class ChessGame
     {
 
-        private string round { get; set; }
-        private string whitePlayer { get; set; }
-        private string blackPlayer { get; set; }
-        private int whiteElo { get; set; }
-        private int blackElo { get; set; }
-        private char result { get; set; }
-        private int eventID { get; set; }
-        private string eventName { get; set; }
-        private string eventSite { get; set; }
-        private DateTime date { get; set; }
-        private string moves { get; set; }
+        public string Round { get; set; }
+        public string WhitePlayer { get; set; }
+        public string BlackPlayer { get; set; }
+        public int WhiteElo { get; set; }
+        public int BlackElo { get; set; }
+        public char Result { get; set; }
+        public int EventID { get; set; }
+        public string EventName { get; set; }
+        public string EventSite { get; set; }
+        public DateTime EventDate { get; set; }
+        public string Moves { get; set; }
 
 
 
