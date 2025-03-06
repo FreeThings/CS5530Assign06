@@ -1,12 +1,71 @@
 {
   "Version": 1,
   "WorkspaceRootPath": "C:\\Users\\Aiden\\source\\repos\\CS5530Assign06\\",
-  "Documents": [],
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{84976219-6D67-4DB9-A9B5-E52957FE1E44}|ChessBrowser\\ChessBrowser.csproj|c:\\users\\aiden\\source\\repos\\cs5530assign06\\chessbrowser\\components\\chessgame.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{84976219-6D67-4DB9-A9B5-E52957FE1E44}|ChessBrowser\\ChessBrowser.csproj|solutionrelative:chessbrowser\\components\\chessgame.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{84976219-6D67-4DB9-A9B5-E52957FE1E44}|ChessBrowser\\ChessBrowser.csproj|c:\\users\\aiden\\source\\repos\\cs5530assign06\\chessbrowser\\components\\pgnparser.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{84976219-6D67-4DB9-A9B5-E52957FE1E44}|ChessBrowser\\ChessBrowser.csproj|solutionrelative:chessbrowser\\components\\pgnparser.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{84976219-6D67-4DB9-A9B5-E52957FE1E44}|ChessBrowser\\ChessBrowser.csproj|c:\\users\\aiden\\source\\repos\\cs5530assign06\\chessbrowser\\components\\pages\\chessbrowser.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{84976219-6D67-4DB9-A9B5-E52957FE1E44}|ChessBrowser\\ChessBrowser.csproj|solutionrelative:chessbrowser\\components\\pages\\chessbrowser.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    }
+  ],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
       "VerticalTabListWidth": 256,
-      "DocumentGroups": []
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 1,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "PGNParser.cs",
+              "DocumentMoniker": "C:\\Users\\Aiden\\source\\repos\\CS5530Assign06\\ChessBrowser\\Components\\PGNParser.cs",
+              "RelativeDocumentMoniker": "ChessBrowser\\Components\\PGNParser.cs",
+              "ToolTip": "C:\\Users\\Aiden\\source\\repos\\CS5530Assign06\\ChessBrowser\\Components\\PGNParser.cs",
+              "RelativeToolTip": "ChessBrowser\\Components\\PGNParser.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-06T05:43:22.158Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "ChessGame.cs",
+              "DocumentMoniker": "C:\\Users\\Aiden\\source\\repos\\CS5530Assign06\\ChessBrowser\\Components\\ChessGame.cs",
+              "RelativeDocumentMoniker": "ChessBrowser\\Components\\ChessGame.cs",
+              "ToolTip": "C:\\Users\\Aiden\\source\\repos\\CS5530Assign06\\ChessBrowser\\Components\\ChessGame.cs",
+              "RelativeToolTip": "ChessBrowser\\Components\\ChessGame.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-06T05:43:08.208Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "ChessBrowser.razor",
+              "DocumentMoniker": "C:\\Users\\Aiden\\source\\repos\\CS5530Assign06\\ChessBrowser\\Components\\Pages\\ChessBrowser.razor",
+              "RelativeDocumentMoniker": "ChessBrowser\\Components\\Pages\\ChessBrowser.razor",
+              "ToolTip": "C:\\Users\\Aiden\\source\\repos\\CS5530Assign06\\ChessBrowser\\Components\\Pages\\ChessBrowser.razor",
+              "RelativeToolTip": "ChessBrowser\\Components\\Pages\\ChessBrowser.razor",
+              "ViewState": "AgIAABgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-03-06T05:41:49.978Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
     }
   ]
 }
