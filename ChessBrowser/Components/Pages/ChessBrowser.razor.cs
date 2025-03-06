@@ -53,7 +53,17 @@ namespace ChessBrowser.Components.Pages
 
           // TODO:
           //   Iterate through your data and generate appropriate insert commands
-                   
+          foreach (ChessGame game in games)
+          {
+            // Insert the game into the database
+            string query = "INSERT INTO games (white, black, result, moves) VALUES (@white, @black, @result, @date, @opening, @moves)";
+            MySqlCommand cmd = new MySqlCommand(query, conn);
+            cmd.Parameters.AddWithValue("@white", game.WhitePlayer);
+            cmd.Parameters.AddWithValue("@black", game.BlackPlayer);
+            cmd.Parameters.AddWithValue("@result", game.Result);
+            cmd.Parameters.AddWithValue("@moves", game.Moves);
+            cmd.ExecuteNonQuery();
+          }         
           // TODO:
           //   Update the Progress member variable every time progress has been made
           //   (e.g. one iteration of your upload loop)
