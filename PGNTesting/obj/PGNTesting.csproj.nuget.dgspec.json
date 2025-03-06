@@ -1,32 +1,25 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Aiden\\Source\\Repos\\CS5530Assign06\\PGNTesting\\PGNTesting.csproj": {}
+    "/Users/joshgreenbaum/RiderProjects/CS5530Assign0666/PGNTesting/PGNTesting.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Aiden\\Source\\Repos\\CS5530Assign06\\ChessBrowser\\ChessBrowser.csproj": {
+    "/Users/joshgreenbaum/RiderProjects/CS5530Assign0666/ChessBrowser/ChessBrowser.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Aiden\\Source\\Repos\\CS5530Assign06\\ChessBrowser\\ChessBrowser.csproj",
+        "projectUniqueName": "/Users/joshgreenbaum/RiderProjects/CS5530Assign0666/ChessBrowser/ChessBrowser.csproj",
         "projectName": "ChessBrowser",
-        "projectPath": "C:\\Users\\Aiden\\Source\\Repos\\CS5530Assign06\\ChessBrowser\\ChessBrowser.csproj",
-        "packagesPath": "C:\\Users\\Aiden\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Aiden\\Source\\Repos\\CS5530Assign06\\ChessBrowser\\obj\\",
+        "projectPath": "/Users/joshgreenbaum/RiderProjects/CS5530Assign0666/ChessBrowser/ChessBrowser.csproj",
+        "packagesPath": "/Users/joshgreenbaum/.nuget/packages/",
+        "outputPath": "/Users/joshgreenbaum/RiderProjects/CS5530Assign0666/ChessBrowser/obj/",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-        ],
         "configFilePaths": [
-          "C:\\Users\\Aiden\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "/Users/joshgreenbaum/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net9.0"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -75,41 +68,34 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.200/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/Users/joshgreenbaum/.dotnet/sdk/9.0.200/PortableRuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\Aiden\\Source\\Repos\\CS5530Assign06\\PGNTesting\\PGNTesting.csproj": {
+    "/Users/joshgreenbaum/RiderProjects/CS5530Assign0666/PGNTesting/PGNTesting.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Aiden\\Source\\Repos\\CS5530Assign06\\PGNTesting\\PGNTesting.csproj",
+        "projectUniqueName": "/Users/joshgreenbaum/RiderProjects/CS5530Assign0666/PGNTesting/PGNTesting.csproj",
         "projectName": "PGNTesting",
-        "projectPath": "C:\\Users\\Aiden\\Source\\Repos\\CS5530Assign06\\PGNTesting\\PGNTesting.csproj",
-        "packagesPath": "C:\\Users\\Aiden\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Aiden\\Source\\Repos\\CS5530Assign06\\PGNTesting\\obj\\",
+        "projectPath": "/Users/joshgreenbaum/RiderProjects/CS5530Assign0666/PGNTesting/PGNTesting.csproj",
+        "packagesPath": "/Users/joshgreenbaum/.nuget/packages/",
+        "outputPath": "/Users/joshgreenbaum/RiderProjects/CS5530Assign0666/PGNTesting/obj/",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-        ],
         "configFilePaths": [
-          "C:\\Users\\Aiden\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "/Users/joshgreenbaum/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net8.0"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "C:\\Users\\Aiden\\Source\\Repos\\CS5530Assign06\\ChessBrowser\\ChessBrowser.csproj": {
-                "projectPath": "C:\\Users\\Aiden\\Source\\Repos\\CS5530Assign06\\ChessBrowser\\ChessBrowser.csproj"
+              "/Users/joshgreenbaum/RiderProjects/CS5530Assign0666/ChessBrowser/ChessBrowser.csproj": {
+                "projectPath": "/Users/joshgreenbaum/RiderProjects/CS5530Assign0666/ChessBrowser/ChessBrowser.csproj"
               }
             }
           }
@@ -129,6 +115,12 @@
       "frameworks": {
         "net8.0": {
           "targetAlias": "net8.0",
+          "dependencies": {
+            "MSTest": {
+              "target": "Package",
+              "version": "[3.6.4, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",
@@ -140,7 +132,22 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.200/PortableRuntimeIdentifierGraph.json"
+          "downloadDependencies": [
+            {
+              "name": "Microsoft.AspNetCore.App.Ref",
+              "version": "[8.0.13, 8.0.13]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Ref",
+              "version": "[8.0.13, 8.0.13]"
+            }
+          ],
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/Users/joshgreenbaum/.dotnet/sdk/9.0.200/PortableRuntimeIdentifierGraph.json"
         }
       }
     }
