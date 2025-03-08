@@ -14,7 +14,7 @@ namespace ChessBrowser.Components.Pages
     /// <summary>
     /// Bound to the Password form input
     /// </summary>
-    private string Password = "IheartV2";
+    private string Password = "";
 
     /// <summary>
     /// Bound to the Database form input
