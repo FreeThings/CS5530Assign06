@@ -106,7 +106,7 @@ namespace ChessBrowser.Components.Pages
                         string white_player_query = "SELECT Name FROM Players WHERE Name = @white";
                         MySqlCommand white_player_cmd = new MySqlCommand(white_player_query, conn);
                         white_player_cmd.Parameters.AddWithValue("@white", game.WhitePlayer);
-                        
+
 
                         //If player not in database, insert player
                         using (MySqlDataReader reader = white_player_cmd.ExecuteReader())
@@ -264,12 +264,94 @@ namespace ChessBrowser.Components.Pages
             {
                 try
                 {
-                    // Open a connection
                     conn.Open();
 
-                    // TODO:
-                    //   Generate and execute an SQL command,
-                    //   then parse the results into an appropriate string and return it.
+                    // SQL Query to include information about search terms:
+                    // Search conditions added assuming the term is not null or empty
+                    string sql = "SELECT g.Round, g.Result, g.Moves, " +
+                                 "w.Name AS WhitePlayer, w.Elo AS WhiteElo, " +
+                                 "b.Name AS BlackPlayer, b.Elo AS BlackElo, " +
+                                 "e.Name AS Event, e.Site, e.Date " +
+                                 "FROM Games g " +
+                                 "JOIN Players w ON g.WhitePlayer = w.pID " +
+                                 "JOIN Players b ON g.BlackPlayer = b.pID " +
+                                 "JOIN Events e ON g.eID = e.eID " +
+                                 "WHERE 1=1";  // Placeholder condition
+
+                    // Add conditions based on the provided filters
+                    if (!string.IsNullOrEmpty(white))
+                    {
+                        sql += " AND w.Name = @white";
+                    }
+                    if (!string.IsNullOrEmpty(black))
+                    {
+                        sql += " AND b.Name = @black";
+                    }
+                    if (!string.IsNullOrEmpty(opening))
+                    {
+                        sql += " AND g.Moves LIKE @opening";
+                    }
+                    if (!string.IsNullOrEmpty(winner))
+                    {
+                        sql += " AND g.Result = @winner";
+                    }
+                    if (useDate)
+                    {
+                        sql += " AND e.Date BETWEEN @start AND @end";
+                    }
+
+                    MySqlCommand cmd = new MySqlCommand(sql, conn);
+
+                    // Add parameters to the command to prevent SQL injection
+                    if (!string.IsNullOrEmpty(white)) cmd.Parameters.AddWithValue("@white", white);
+                    if (!string.IsNullOrEmpty(black)) cmd.Parameters.AddWithValue("@black", black);
+                    if (!string.IsNullOrEmpty(opening)) cmd.Parameters.AddWithValue("@opening", "%" + opening + "%");
+                    if (!string.IsNullOrEmpty(winner)) cmd.Parameters.AddWithValue("@winner", winner);
+                    if (useDate)
+                    {
+                        cmd.Parameters.AddWithValue("@start", start.ToString("yyyy-MM-dd"));
+                        cmd.Parameters.AddWithValue("@end", end.ToString("yyyy-MM-dd"));
+                    }
+
+                    // Execute the query and retrieve results
+                    using (MySqlDataReader reader = cmd.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            numRows++;
+
+                            // Retrieve player names and Elo ratings
+                            string WhitePlayer = (string)reader["WhitePlayer"];
+                            string BlackPlayer = (string)reader["BlackPlayer"];
+                            uint WhiteElo = Convert.ToUInt32(reader["WhiteElo"]);
+                            uint BlackElo = Convert.ToUInt32(reader["BlackElo"]);
+
+                            // Retrieve and translate the result
+                            string result = reader["Result"].ToString() switch
+                            {
+                                "1" => "W",
+                                "0" => "B",
+                                "D" => "D",
+                                _ => "N/A"
+                            };
+
+                            // Format the result row
+                            parsedResult += "Event: " + reader["Event"].ToString() + "\n" +
+                                           "Site: " + reader["Site"].ToString() + "\n" +
+                                           "Date: " + Convert.ToDateTime(reader["Date"]).ToString("MM/dd/yyyy") + "\n" +
+                                           "White: " + WhitePlayer + " (" + WhiteElo + ")\n" +
+                                           "Black: " + BlackPlayer + " (" + BlackElo + ")\n" +
+                                           "Result: " + result + "\n";
+
+                            // Optionally include the PGN moves if showMoves is true
+                            if (showMoves)
+                            {
+                                parsedResult += "Moves: " + reader["Moves"].ToString() + "\n";
+                            }
+
+                            parsedResult += "\n";  // Add a newline for each result
+                        }
+                    }
                 }
                 catch (Exception e)
                 {
