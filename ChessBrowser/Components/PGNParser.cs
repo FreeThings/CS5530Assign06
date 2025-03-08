@@ -46,7 +46,14 @@ namespace ChessBrowser.Components
                             game.EventSite = contents;
                             break;
                         case "EventDate":
-                            game.EventDate = DateTime.Parse(contents);
+                            if (DateTime.TryParse(contents, out DateTime date))
+                            {
+                                game.EventDate = date.ToString("yyyy-MM-dd");
+                            }
+                            else
+                            {
+                                game.EventDate = "0000-00-00";
+                            }
                             break;
                         case "Round":
                             game.Round = contents;

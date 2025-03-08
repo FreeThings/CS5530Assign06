@@ -41,12 +41,8 @@ namespace ChessBrowser.Components.Pages
             // assuimg you've filled in the credentials in the GUI
             string connection = GetConnectionString();
 
-            Debug.WriteLine("Calling PGNParser");
-
             // Parse PGN Data
             List<ChessGame> games = PGNParser.ChessGameParser(PGNFileLines);
-
-            Debug.WriteLine("Number of games: " + games.Count);
 
             using (MySqlConnection conn = new MySqlConnection(connection))
             {
@@ -59,8 +55,11 @@ namespace ChessBrowser.Components.Pages
                     //   Iterate through your data and generate appropriate insert commands
                     uint white_id, black_id, event_id;
 
+                    int gameNumber = 0;
+
                     foreach (ChessGame game in games)
                     {
+                        gameNumber++;
                         //Check if black player in database
                         string black_player_query = "SELECT Name FROM Players WHERE Name = @black";
                         MySqlCommand black_player_cmd = new MySqlCommand(black_player_query, conn);
@@ -88,7 +87,6 @@ namespace ChessBrowser.Components.Pages
 
                         if (game.BlackElo > currentBlackElo)
                         {
-                            Debug.WriteLine("ELO CHANGED!!!!!!");
                             string update_player_query = "UPDATE Players SET Elo = @elo WHERE Name = @black";
                             MySqlCommand update_player_cmd = new MySqlCommand(update_player_query, conn);
                             update_player_cmd.Parameters.AddWithValue("@black", game.BlackPlayer);
@@ -132,9 +130,6 @@ namespace ChessBrowser.Components.Pages
 
                         if (game.WhiteElo > currentWhiteElo)
                         {
-                            Debug.WriteLine("Player: " + game.WhitePlayer + " ELO CHANGED!!!!!!");
-                            Debug.WriteLine("Old Elo: " + currentWhiteElo);
-                            Debug.WriteLine("New Elo: " + game.WhiteElo);
                             string update_player_query = "UPDATE Players SET Elo = @elo WHERE Name = @black";
                             MySqlCommand update_player_cmd = new MySqlCommand(update_player_query, conn);
                             update_player_cmd.Parameters.AddWithValue("@black", game.WhitePlayer);
@@ -199,7 +194,10 @@ namespace ChessBrowser.Components.Pages
                         string get_event_id_query = "SELECT eID FROM Events WHERE Name = @event AND Date = @date AND Site = @site";
                         MySqlCommand get_event_id_cmd = new MySqlCommand(get_event_id_query, conn);
                         get_event_id_cmd.Parameters.AddWithValue("@event", game.EventName);
+
                         get_event_id_cmd.Parameters.AddWithValue("@date", game.EventDate);
+
+
                         get_event_id_cmd.Parameters.AddWithValue("@site", game.EventSite);
                         event_id = (uint)get_event_id_cmd.ExecuteScalar();
 
@@ -213,17 +211,17 @@ namespace ChessBrowser.Components.Pages
                         cmd.Parameters.AddWithValue("@round", game.Round);
                         cmd.Parameters.AddWithValue("@eID", event_id);
                         cmd.ExecuteNonQuery();
+
+                        // TODO:
+                        //   Update the Progress member variable every time progress has been made
+                        //   (e.g. one iteration of your upload loop)
+                        //   This will update the progress bar in the GUI
+                        //   Its value should be an integer representing a percentage of completion
+                        Progress = (int)(((double)gameNumber / (double)games.Count) * 100);
+
+                        // This tells the GUI to redraw after you update Progress (this should go inside your loop)
+                        await InvokeAsync(StateHasChanged);
                     }
-                    // TODO:
-                    //   Update the Progress member variable every time progress has been made
-                    //   (e.g. one iteration of your upload loop)
-                    //   This will update the progress bar in the GUI
-                    //   Its value should be an integer representing a percentage of completion
-                    Progress += (100 / games.Count);
-
-                    // This tells the GUI to redraw after you update Progress (this should go inside your loop)
-                    await InvokeAsync(StateHasChanged);
-
 
                 }
                 catch (Exception e)
@@ -319,7 +317,6 @@ namespace ChessBrowser.Components.Pages
                     // insert the games, and don't wait for it to finish
                     // _ = throws away the task result, since we aren't waiting for it
                     _ = InsertGameData(fileLines);
-                    Debug.WriteLine("Done inserting Game data");
                 }
             }
             catch (Exception e)

@@ -14,7 +14,7 @@ namespace ChessBrowser.Components
         public int EventID { get; set; }
         public string EventName { get; set; }
         public string EventSite { get; set; }
-        public DateTime EventDate { get; set; }
+        public string EventDate { get; set; }
         public string Moves { get; set; }
 
 
