@@ -1,14 +1,17 @@
-﻿using System.Diagnostics.Eventing.Reader;
+﻿using MySqlX.XDevAPI.Common;
+using System.Diagnostics.Eventing.Reader;
+
+// Authors: Aiden de Boer and Josh Greenbaum
+// Date: 2025-03-07
 
 namespace ChessBrowser.Components
 {
+    // This class is responsible for parsing PGN files and extracting the relevant information
     public static class PGNParser
     {
 
         public static List<ChessGame> ChessGameParser(string[] PGN)
         {
-
-            Console.WriteLine("Parsing PGN...");
 
             List<ChessGame> games = new List<ChessGame>();
             ChessGame game = new ChessGame();
@@ -16,7 +19,8 @@ namespace ChessBrowser.Components
 
             foreach (string line in PGN)
             {
-                if(string.IsNullOrWhiteSpace(line)) 
+                // Flag alternates between true and false to determine if the line is a tag or a move
+                if (string.IsNullOrWhiteSpace(line)) 
                 { 
                     if (!flag)
                     {
@@ -31,6 +35,7 @@ namespace ChessBrowser.Components
                         continue;
                     }
                 }
+                // If the line is a tag, parse the tag and its contents
                 if (line.Substring(0,1) == "[")
                 {
                     string tag = line.Substring(1).Split(" ")[0];
@@ -65,7 +70,21 @@ namespace ChessBrowser.Components
                             game.BlackPlayer = contents;
                             break;
                         case "Result":
-                            game.Result = contents[0];
+                            if (contents[0] == '1')
+                            {
+
+                                if (contents[1] == '/')
+                                {
+                                    game.Result = 'D';
+                                } else
+                                {
+                                    game.Result = 'W';
+                                }
+                            }
+                            else
+                            {
+                                game.Result = 'B';
+                            }
                             break;
                         case "WhiteElo":
                             game.WhiteElo = int.Parse(contents);
@@ -80,7 +99,8 @@ namespace ChessBrowser.Components
                 }
 
             }
-            
+
+            // If the last game has moves, add it to the list of games
             if (!string.IsNullOrEmpty(game.Moves))
             {
                 games.Add(game);

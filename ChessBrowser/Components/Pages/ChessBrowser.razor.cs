@@ -10,17 +10,17 @@ namespace ChessBrowser.Components.Pages
         /// <summary>
         /// Bound to the Unsername form input
         /// </summary>
-        private string Username = "u1433463";
+        private string Username = "";
 
         /// <summary>
         /// Bound to the Password form input
         /// </summary>
-        private string Password = "gogeta";
+        private string Password = "";
 
         /// <summary>
         /// Bound to the Database form input
         /// </summary>
-        private string Database = "Team72Chess";
+        private string Database = "";
 
         /// <summary>
         /// Represents the progress percentage of the current
@@ -94,15 +94,6 @@ namespace ChessBrowser.Components.Pages
                             update_player_cmd.ExecuteNonQuery();
                         }
 
-                        //if (black_player_cmd.ExecuteReader().HasRows == false)
-                        //{
-                        //    string insert_player_query = "INSERT INTO players (Name, Elo) VALUES (@black, @elo)";
-                        //    MySqlCommand insert_player_cmd = new MySqlCommand(insert_player_query, conn);
-                        //    insert_player_cmd.Parameters.AddWithValue("@black", game.BlackPlayer);
-                        //    insert_player_cmd.Parameters.AddWithValue("@elo", game.BlackElo);
-                        //    insert_player_cmd.ExecuteNonQuery();
-                        //}
-
                         string white_player_query = "SELECT Name FROM Players WHERE Name = @white";
                         MySqlCommand white_player_cmd = new MySqlCommand(white_player_query, conn);
                         white_player_cmd.Parameters.AddWithValue("@white", game.WhitePlayer);
@@ -136,15 +127,6 @@ namespace ChessBrowser.Components.Pages
                             update_player_cmd.Parameters.AddWithValue("@elo", game.WhiteElo);
                             update_player_cmd.ExecuteNonQuery();
                         }
-
-                        //if (white_player_cmd.ExecuteReader().HasRows == false)
-                        //{
-                        //    string insert_player_query = "INSERT INTO Players (Name) VALUES (@white, @elo)";
-                        //    MySqlCommand insert_player_cmd = new MySqlCommand(insert_player_query, conn);
-                        //    insert_player_cmd.Parameters.AddWithValue("@white", game.WhitePlayer);
-                        //    insert_player_cmd.Parameters.AddWithValue("@elo", game.WhiteElo);
-                        //    insert_player_cmd.ExecuteNonQuery();
-                        //}
 
                         //Get white player id
                         string get_player_id_query = "SELECT pID FROM Players WHERE Name = @white";
@@ -180,24 +162,11 @@ namespace ChessBrowser.Components.Pages
                             }
                         }
 
-                        //if (event_cmd.ExecuteReader().HasRows == false)
-                        //{
-                        //    string insert_event_query = "INSERT INTO Events (Name, Date, Site) VALUES (@event, @date, @site)";
-                        //    MySqlCommand insert_event_cmd = new MySqlCommand(insert_event_query, conn);
-                        //    insert_event_cmd.Parameters.AddWithValue("@event", game.EventName);
-                        //    insert_event_cmd.Parameters.AddWithValue("@date", game.EventDate);
-                        //    insert_event_cmd.Parameters.AddWithValue("@site", game.EventSite);
-                        //    insert_event_cmd.ExecuteNonQuery();
-                        //}
-
                         //Get event id
                         string get_event_id_query = "SELECT eID FROM Events WHERE Name = @event AND Date = @date AND Site = @site";
                         MySqlCommand get_event_id_cmd = new MySqlCommand(get_event_id_query, conn);
                         get_event_id_cmd.Parameters.AddWithValue("@event", game.EventName);
-
                         get_event_id_cmd.Parameters.AddWithValue("@date", game.EventDate);
-
-
                         get_event_id_cmd.Parameters.AddWithValue("@site", game.EventSite);
                         event_id = (uint)get_event_id_cmd.ExecuteScalar();
 
@@ -212,11 +181,8 @@ namespace ChessBrowser.Components.Pages
                         cmd.Parameters.AddWithValue("@eID", event_id);
                         cmd.ExecuteNonQuery();
 
-                        // TODO:
-                        //   Update the Progress member variable every time progress has been made
-                        //   (e.g. one iteration of your upload loop)
-                        //   This will update the progress bar in the GUI
-                        //   Its value should be an integer representing a percentage of completion
+
+                        // Progress bar update
                         Progress = (int)(((double)gameNumber / (double)games.Count) * 100);
 
                         // This tells the GUI to redraw after you update Progress (this should go inside your loop)
@@ -271,7 +237,7 @@ namespace ChessBrowser.Components.Pages
                     string sql = "SELECT g.Round, g.Result, g.Moves, " +
                                  "w.Name AS WhitePlayer, w.Elo AS WhiteElo, " +
                                  "b.Name AS BlackPlayer, b.Elo AS BlackElo, " +
-                                 "e.Name AS Event, e.Site, e.Date " +
+                                 "e.Name AS Event, e.Site, COALESCE(e.Date, '0000-00-00') AS Date " +
                                  "FROM Games g " +
                                  "JOIN Players w ON g.WhitePlayer = w.pID " +
                                  "JOIN Players b ON g.BlackPlayer = b.pID " +
@@ -293,7 +259,19 @@ namespace ChessBrowser.Components.Pages
                     }
                     if (!string.IsNullOrEmpty(winner))
                     {
-                        sql += " AND g.Result = @winner";
+                        // Filter based on the winner
+                        switch (winner)
+                        {
+                            case "W": // White won
+                                sql += " AND g.Result = 'W'";
+                                break;
+                            case "B": // Black won
+                                sql += " AND g.Result = 'B'";
+                                break;
+                            case "D": // Draw
+                                sql += " AND g.Result = 'D'";
+                                break;
+                        }
                     }
                     if (useDate)
                     {
@@ -327,23 +305,45 @@ namespace ChessBrowser.Components.Pages
                             uint BlackElo = Convert.ToUInt32(reader["BlackElo"]);
 
                             // Retrieve and translate the result
-                            string result = reader["Result"].ToString() switch
+                            string result;
+
+                            switch (reader["Result"].ToString())
                             {
-                                "1" => "W",
-                                "0" => "B",
-                                "D" => "D",
-                                _ => "N/A"
-                            };
+                                case "W":
+                                    result = "W";
+                                    break;
+                                case "B":
+                                    result = "B";
+                                    break;
+                                case "D":
+                                    result = "D";
+                                    break;
+                                default:
+                                    result = "N/A";
+                                    break;
+                            }
+
+                            string date = "";
+
+                            // Check if the date is valid and format it
+                            if (DateTime.TryParse(reader["Date"].ToString(), out DateTime parsedDate))
+                            {
+                                date = parsedDate.ToString("MM/dd/yyyy");
+                            }
+                            else
+                            {
+                                date = "00/00/0000";
+                            }
 
                             // Format the result row
                             parsedResult += "Event: " + reader["Event"].ToString() + "\n" +
                                            "Site: " + reader["Site"].ToString() + "\n" +
-                                           "Date: " + Convert.ToDateTime(reader["Date"]).ToString("MM/dd/yyyy") + "\n" +
+                                           "Date: " + date + "\n" +
                                            "White: " + WhitePlayer + " (" + WhiteElo + ")\n" +
                                            "Black: " + BlackPlayer + " (" + BlackElo + ")\n" +
                                            "Result: " + result + "\n";
 
-                            // Optionally include the PGN moves if showMoves is true
+                            // Include the PGN moves if showMoves is true
                             if (showMoves)
                             {
                                 parsedResult += "Moves: " + reader["Moves"].ToString() + "\n";
