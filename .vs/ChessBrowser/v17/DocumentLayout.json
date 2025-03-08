@@ -3,12 +3,12 @@
   "WorkspaceRootPath": "C:\\Users\\Aiden\\source\\repos\\CS5530Assign06\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{84976219-6D67-4DB9-A9B5-E52957FE1E44}|ChessBrowser\\ChessBrowser.csproj|c:\\users\\aiden\\source\\repos\\cs5530assign06\\chessbrowser\\components\\pages\\chessbrowser.razor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{84976219-6D67-4DB9-A9B5-E52957FE1E44}|ChessBrowser\\ChessBrowser.csproj|solutionrelative:chessbrowser\\components\\pages\\chessbrowser.razor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{84976219-6D67-4DB9-A9B5-E52957FE1E44}|ChessBrowser\\ChessBrowser.csproj|c:\\users\\aiden\\source\\repos\\cs5530assign06\\chessbrowser\\components\\pgnparser.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{84976219-6D67-4DB9-A9B5-E52957FE1E44}|ChessBrowser\\ChessBrowser.csproj|solutionrelative:chessbrowser\\components\\pgnparser.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{84976219-6D67-4DB9-A9B5-E52957FE1E44}|ChessBrowser\\ChessBrowser.csproj|c:\\users\\aiden\\source\\repos\\cs5530assign06\\chessbrowser\\components\\pages\\chessbrowser.razor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{84976219-6D67-4DB9-A9B5-E52957FE1E44}|ChessBrowser\\ChessBrowser.csproj|solutionrelative:chessbrowser\\components\\pages\\chessbrowser.razor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{84976219-6D67-4DB9-A9B5-E52957FE1E44}|ChessBrowser\\ChessBrowser.csproj|c:\\users\\aiden\\source\\repos\\cs5530assign06\\chessbrowser\\components\\pages\\chessbrowser.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
@@ -34,20 +34,19 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 3,
+          "SelectedChildIndex": 2,
           "Children": [
             {
               "$type": "Document",
               "DocumentIndex": 4,
-              "Title": "PGNTesting",
+              "Title": "PGNTesting.csproj",
               "DocumentMoniker": "C:\\Users\\Aiden\\Source\\Repos\\CS5530Assign06\\PGNTesting\\PGNTesting.csproj",
               "RelativeDocumentMoniker": "PGNTesting\\PGNTesting.csproj",
               "ToolTip": "C:\\Users\\Aiden\\Source\\Repos\\CS5530Assign06\\PGNTesting\\PGNTesting.csproj",
               "RelativeToolTip": "PGNTesting\\PGNTesting.csproj",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
-              "WhenOpened": "2025-03-08T02:26:56.612Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-08T02:26:56.612Z"
             },
             {
               "$type": "Document",
@@ -59,31 +58,30 @@
               "RelativeToolTip": "ChessBrowser\\Components\\ChessGame.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-08T02:04:49.824Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-08T02:04:49.824Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 0,
               "Title": "PGNParser.cs",
               "DocumentMoniker": "C:\\Users\\Aiden\\source\\repos\\CS5530Assign06\\ChessBrowser\\Components\\PGNParser.cs",
               "RelativeDocumentMoniker": "ChessBrowser\\Components\\PGNParser.cs",
               "ToolTip": "C:\\Users\\Aiden\\source\\repos\\CS5530Assign06\\ChessBrowser\\Components\\PGNParser.cs",
               "RelativeToolTip": "ChessBrowser\\Components\\PGNParser.cs",
-              "ViewState": "AgIAACgAAAAAAAAAAAAhwDAAAAAcAAAAAAAAAA==",
+              "ViewState": "AgIAACIAAAAAAAAAAAAawDAAAAAcAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-03-08T02:04:42.565Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "ChessBrowser.razor.cs",
               "DocumentMoniker": "C:\\Users\\Aiden\\source\\repos\\CS5530Assign06\\ChessBrowser\\Components\\Pages\\ChessBrowser.razor.cs",
               "RelativeDocumentMoniker": "ChessBrowser\\Components\\Pages\\ChessBrowser.razor.cs",
               "ToolTip": "C:\\Users\\Aiden\\source\\repos\\CS5530Assign06\\ChessBrowser\\Components\\Pages\\ChessBrowser.razor.cs",
               "RelativeToolTip": "ChessBrowser\\Components\\Pages\\ChessBrowser.razor.cs",
-              "ViewState": "AgIAAAYAAAAAAAAAAAAAALUAAAAJAAAAAAAAAA==",
+              "ViewState": "AgIAAKwAAAAAAAAAAAAiwIgAAABJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-03-08T02:03:38.639Z",
               "EditorCaption": ""
@@ -98,8 +96,7 @@
               "RelativeToolTip": "ChessBrowser\\Components\\_Imports.razor",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-03-08T02:03:37.964Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-08T02:03:37.964Z"
             },
             {
               "$type": "Document",
@@ -111,8 +108,7 @@
               "RelativeToolTip": "ChessBrowser\\Components\\Pages\\ChessBrowser.razor",
               "ViewState": "AgIAAHkAAAAAAAAAAAAtwIsAAAAYAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-03-08T02:03:23.841Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-08T02:03:23.841Z"
             }
           ]
         }
