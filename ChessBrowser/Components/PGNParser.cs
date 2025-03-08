@@ -8,6 +8,7 @@ namespace ChessBrowser.Components
         public static List<ChessGame> ChessGameParser(string[] PGN)
         {
 
+            Console.WriteLine("Parsing PGN...");
 
             List<ChessGame> games = new List<ChessGame>();
             ChessGame game = new ChessGame();
