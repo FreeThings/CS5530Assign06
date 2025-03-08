@@ -9,17 +9,17 @@ namespace ChessBrowser.Components.Pages
     /// <summary>
     /// Bound to the Unsername form input
     /// </summary>
-    private string Username = "";
+    private string Username = "u1450087";
 
     /// <summary>
     /// Bound to the Password form input
     /// </summary>
-    private string Password = "";
+    private string Password = "IheartV2";
 
     /// <summary>
     /// Bound to the Database form input
     /// </summary>
-    private string Database = "";
+    private string Database = "atr.eng.utah.edu";
 
     /// <summary>
     /// Represents the progress percentage of the current
@@ -53,15 +53,90 @@ namespace ChessBrowser.Components.Pages
 
           // TODO:
           //   Iterate through your data and generate appropriate insert commands
+          int white_id;
+          int black_id;
+          int event_id;
+          
           foreach (ChessGame game in games)
           {
+            //Check if black player in database
+            string black_player_query = "SELECT Name FROM players WHERE Name = @black";
+            MySqlCommand black_player_cmd = new MySqlCommand(black_player_query, conn);
+            black_player_cmd.Parameters.AddWithValue("@black", game.BlackPlayer);
+            black_player_cmd.ExecuteReader();
+            
+            //If player not in database, insert player
+            if(black_player_cmd.ExecuteReader().HasRows == false)
+            {
+              string insert_player_query = "INSERT INTO players (Name, Elo) VALUES (@black, @elo)";
+              MySqlCommand insert_player_cmd = new MySqlCommand(insert_player_query, conn);
+              insert_player_cmd.Parameters.AddWithValue("@black", game.BlackPlayer);
+              insert_player_cmd.Parameters.AddWithValue("@elo", game.BlackElo);
+              insert_player_cmd.ExecuteNonQuery();
+            }
+            
+            string white_player_query = "SELECT Name FROM players WHERE Name = @white";
+            MySqlCommand white_player_cmd = new MySqlCommand(white_player_query, conn);
+            white_player_cmd.Parameters.AddWithValue("@white", game.WhitePlayer);
+            white_player_cmd.ExecuteReader();
+            
+            //If player not in database, insert player
+            if (white_player_cmd.ExecuteReader().HasRows == false)
+            {
+              string insert_player_query = "INSERT INTO players (Name) VALUES (@white, @elo)";
+              MySqlCommand insert_player_cmd = new MySqlCommand(insert_player_query, conn);
+              insert_player_cmd.Parameters.AddWithValue("@white", game.WhitePlayer);
+              insert_player_cmd.Parameters.AddWithValue("@elo", game.WhiteElo);
+              insert_player_cmd.ExecuteNonQuery();
+            }
+            //Get white player id
+            string get_player_id_query = "SELECT pID FROM players WHERE Name = @white";
+            MySqlCommand get_player_id_cmd = new MySqlCommand(get_player_id_query, conn);
+            get_player_id_cmd.Parameters.AddWithValue("@white", game.WhitePlayer);
+            white_id = (int)get_player_id_cmd.ExecuteScalar();
+            
+            //Get black player id
+            get_player_id_query = "SELECT pID FROM players WHERE Name = @black";
+            get_player_id_cmd = new MySqlCommand(get_player_id_query, conn);
+            get_player_id_cmd.Parameters.AddWithValue("@black", game.BlackPlayer);
+            black_id = (int)get_player_id_cmd.ExecuteScalar();
+            
+            //Check if Event in database
+            string event_query = "SELECT Name FROM events WHERE Name = @event AND Date = @date AND Site = @site";
+            MySqlCommand event_cmd = new MySqlCommand(event_query, conn);
+            event_cmd.Parameters.AddWithValue("@event", game.EventName);
+            event_cmd.Parameters.AddWithValue("@date", game.EventDate);
+            event_cmd.Parameters.AddWithValue("@site", game.EventSite);
+            event_cmd.ExecuteReader();
+            
+            //If event not in database, insert event
+            if (event_cmd.ExecuteReader().HasRows == false)
+            {
+              string insert_event_query = "INSERT INTO events (Name, Date, Site) VALUES (@event, @date, @site)";
+              MySqlCommand insert_event_cmd = new MySqlCommand(insert_event_query, conn);
+              insert_event_cmd.Parameters.AddWithValue("@event", game.EventName);
+              insert_event_cmd.Parameters.AddWithValue("@date", game.EventDate);
+              insert_event_cmd.Parameters.AddWithValue("@site", game.EventSite);
+              insert_event_cmd.ExecuteNonQuery();
+            }
+            
+            //Get event id
+            string get_event_id_query = "SELECT eID FROM events WHERE Name = @event AND Date = @date AND Site = @site";
+            MySqlCommand get_event_id_cmd = new MySqlCommand(get_event_id_query, conn);
+            get_event_id_cmd.Parameters.AddWithValue("@event", game.EventName);
+            get_event_id_cmd.Parameters.AddWithValue("@date", game.EventDate);
+            get_event_id_cmd.Parameters.AddWithValue("@site", game.EventSite);
+            event_id = (int)get_event_id_cmd.ExecuteScalar();
+            
             // Insert the game into the database
-            string query = "INSERT INTO games (white, black, result, moves) VALUES (@white, @black, @result, @date, @opening, @moves)";
-            MySqlCommand cmd = new MySqlCommand(query, conn);
-            cmd.Parameters.AddWithValue("@white", game.WhitePlayer);
-            cmd.Parameters.AddWithValue("@black", game.BlackPlayer);
+            string insert_query = "INSERT INTO games (Round, Result, Moves, BlackPlayer, WhitePlayer, eID) VALUES (@round, @result, @moves, @black, @white, @eID)";
+            MySqlCommand cmd = new MySqlCommand(insert_query, conn);
+            cmd.Parameters.AddWithValue("@white", white_id);
+            cmd.Parameters.AddWithValue("@black", black_id);
             cmd.Parameters.AddWithValue("@result", game.Result);
             cmd.Parameters.AddWithValue("@moves", game.Moves);
+            cmd.Parameters.AddWithValue("@round", game.Round);
+            cmd.Parameters.AddWithValue("@eID", event_id);
             cmd.ExecuteNonQuery();
           }         
           // TODO:
@@ -69,7 +144,7 @@ namespace ChessBrowser.Components.Pages
           //   (e.g. one iteration of your upload loop)
           //   This will update the progress bar in the GUI
           //   Its value should be an integer representing a percentage of completion
-          Progress = 0;
+          Progress += (100 / games.Count);
 
           // This tells the GUI to redraw after you update Progress (this should go inside your loop)
           await InvokeAsync(StateHasChanged);

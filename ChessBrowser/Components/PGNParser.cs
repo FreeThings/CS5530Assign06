@@ -15,22 +15,22 @@ namespace ChessBrowser.Components
 
             foreach (string line in PGN)
             {
-                if(line == "/n") 
+                if(string.IsNullOrWhiteSpace(line)) 
                 { 
-                    if (flag == false)
+                    if (!flag)
                     {
                         flag = true;
                         continue;
-                    }
+                    } 
                     else
                     {
-                        games.Append(game);
+                        games.Add(game);
                         game = new ChessGame();
                         flag = false;
                         continue;
                     }
                 }
-                if (line.Substring(0,0) == "[")
+                if (line.Substring(0,1) == "[")
                 {
                     string tag = line.Substring(1).Split(" ")[0];
 
@@ -72,7 +72,12 @@ namespace ChessBrowser.Components
                 }
 
             }
-
+            
+            if (!string.IsNullOrEmpty(game.Moves))
+            {
+                games.Add(game);
+            }
+            
             return games;
         }
 

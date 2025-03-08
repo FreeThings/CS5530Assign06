@@ -1,43 +1,43 @@
 {
   "Files": [
     {
-      "Id": "C:\\Users\\Aiden\\Source\\Repos\\CS5530Assign06\\ChessBrowser\\obj\\Debug\\net9.0\\scopedcss\\projectbundle\\ChessBrowser.bundle.scp.css",
-      "PackagePath": "staticwebassets\\ChessBrowser.jgv57k5d00.bundle.scp.css"
+      "Id": "/Users/joshgreenbaum/RiderProjects/CS5530Assign0666/ChessBrowser/obj/Debug/net9.0/scopedcss/projectbundle/ChessBrowser.bundle.scp.css",
+      "PackagePath": "staticwebassets/ChessBrowser.uc4zenfcql.bundle.scp.css"
     },
     {
-      "Id": "C:\\Users\\Aiden\\Source\\Repos\\CS5530Assign06\\ChessBrowser\\wwwroot\\app.css",
-      "PackagePath": "staticwebassets\\app.css"
+      "Id": "/Users/joshgreenbaum/RiderProjects/CS5530Assign0666/ChessBrowser/wwwroot/app.css",
+      "PackagePath": "staticwebassets/app.css"
     },
     {
-      "Id": "C:\\Users\\Aiden\\Source\\Repos\\CS5530Assign06\\ChessBrowser\\wwwroot\\bootstrap\\bootstrap.min.css",
-      "PackagePath": "staticwebassets\\bootstrap\\bootstrap.min.css"
+      "Id": "/Users/joshgreenbaum/RiderProjects/CS5530Assign0666/ChessBrowser/wwwroot/bootstrap/bootstrap.min.css",
+      "PackagePath": "staticwebassets/bootstrap/bootstrap.min.css"
     },
     {
-      "Id": "C:\\Users\\Aiden\\Source\\Repos\\CS5530Assign06\\ChessBrowser\\wwwroot\\bootstrap\\bootstrap.min.css.map",
-      "PackagePath": "staticwebassets\\bootstrap\\bootstrap.min.css.map"
+      "Id": "/Users/joshgreenbaum/RiderProjects/CS5530Assign0666/ChessBrowser/wwwroot/bootstrap/bootstrap.min.css.map",
+      "PackagePath": "staticwebassets/bootstrap/bootstrap.min.css.map"
     },
     {
-      "Id": "C:\\Users\\Aiden\\Source\\Repos\\CS5530Assign06\\ChessBrowser\\wwwroot\\favicon.png",
-      "PackagePath": "staticwebassets\\favicon.png"
+      "Id": "/Users/joshgreenbaum/RiderProjects/CS5530Assign0666/ChessBrowser/wwwroot/favicon.png",
+      "PackagePath": "staticwebassets/favicon.png"
     },
     {
-      "Id": "obj\\Debug\\net9.0\\staticwebassets\\msbuild.ChessBrowser.Microsoft.AspNetCore.StaticWebAssetEndpoints.props",
+      "Id": "obj/Debug/net9.0/staticwebassets/msbuild.ChessBrowser.Microsoft.AspNetCore.StaticWebAssetEndpoints.props",
       "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssetEndpoints.props"
     },
     {
-      "Id": "obj\\Debug\\net9.0\\staticwebassets\\msbuild.ChessBrowser.Microsoft.AspNetCore.StaticWebAssets.props",
+      "Id": "obj/Debug/net9.0/staticwebassets/msbuild.ChessBrowser.Microsoft.AspNetCore.StaticWebAssets.props",
       "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
     },
     {
-      "Id": "obj\\Debug\\net9.0\\staticwebassets\\msbuild.build.ChessBrowser.props",
+      "Id": "obj/Debug/net9.0/staticwebassets/msbuild.build.ChessBrowser.props",
       "PackagePath": "build\\ChessBrowser.props"
     },
     {
-      "Id": "obj\\Debug\\net9.0\\staticwebassets\\msbuild.buildMultiTargeting.ChessBrowser.props",
+      "Id": "obj/Debug/net9.0/staticwebassets/msbuild.buildMultiTargeting.ChessBrowser.props",
       "PackagePath": "buildMultiTargeting\\ChessBrowser.props"
     },
     {
-      "Id": "obj\\Debug\\net9.0\\staticwebassets\\msbuild.buildTransitive.ChessBrowser.props",
+      "Id": "obj/Debug/net9.0/staticwebassets/msbuild.buildTransitive.ChessBrowser.props",
       "PackagePath": "buildTransitive\\ChessBrowser.props"
     }
   ],
