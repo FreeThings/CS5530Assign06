@@ -46,8 +46,7 @@
               "RelativeToolTip": "ChessBrowser\\Components\\Pages\\About.razor",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-03-08T06:34:49.98Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-08T06:34:49.98Z"
             },
             {
               "$type": "Document",
@@ -59,8 +58,7 @@
               "RelativeToolTip": "ChessBrowser\\Components\\PGNParser.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-08T02:04:42.565Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-08T02:04:42.565Z"
             },
             {
               "$type": "Document",
@@ -72,8 +70,7 @@
               "RelativeToolTip": "ChessBrowser\\Components\\ChessGame.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAAATAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-08T02:04:49.824Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-08T02:04:49.824Z"
             },
             {
               "$type": "Document",
@@ -83,7 +80,7 @@
               "RelativeDocumentMoniker": "ChessBrowser\\Components\\Pages\\ChessBrowser.razor.cs",
               "ToolTip": "C:\\Users\\Aiden\\source\\repos\\CS5530Assign06\\ChessBrowser\\Components\\Pages\\ChessBrowser.razor.cs",
               "RelativeToolTip": "ChessBrowser\\Components\\Pages\\ChessBrowser.razor.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAFYBAAAAAAAAAAAAAAEAAAAOAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-03-08T02:03:38.639Z",
               "EditorCaption": ""
@@ -98,8 +95,7 @@
               "RelativeToolTip": "ChessBrowser\\Components\\_Imports.razor",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-03-08T02:03:37.964Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-08T02:03:37.964Z"
             },
             {
               "$type": "Document",
@@ -111,8 +107,7 @@
               "RelativeToolTip": "ChessBrowser\\Components\\Pages\\ChessBrowser.razor",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-03-08T02:03:23.841Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-08T02:03:23.841Z"
             }
           ]
         }
